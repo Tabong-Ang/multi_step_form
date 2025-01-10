@@ -104,6 +104,7 @@ body {
   align-items: center;
   flex-direction: column;
   background: var(--Light-blue);
+  overflow: hidden;
 }
 
 main {
@@ -471,16 +472,17 @@ input[type="checkbox"] {
   }
 
   .direction {
-    bottom: -10rem;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-evenly;
     background: var(--White);
     padding: 1rem;
     left: -1rem;
-    gap: 9rem;
+    gap: 9.3rem;
   }
 
   .direction p {
     width: 5rem;
-    border: 1px solid red;
   }
 
 
