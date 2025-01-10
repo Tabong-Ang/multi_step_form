@@ -1,0 +1,492 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sofadi+One&family=Space+Grotesk:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+  --purple: hsl(270, 50%, 40%);
+}
+
+html {
+  font-family: "Ubuntu", serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--Light-blue);
+}
+
+main {
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.85rem;
+  width: 70%;
+  background: var(--White);
+  position: relative;
+}
+
+/* <!-- Step 1 start --> */
+
+aside {
+  display: flex;
+  position: relative;
+  width: 35%;
+}
+
+.step-outline {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 80%;
+}
+
+.step-pane {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.step-pane > p {
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--Light-gray);
+  margin-right: 1rem;
+  text-align: center;
+  color: var(--White);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.step-pane .step-info span {
+  font-size: 0.7rem;
+  color: var(--Light-gray);
+}
+
+.step-pane .step-info p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: -0.4rem;
+  color: var(--White);
+}
+
+.form-style {
+  padding: 2rem 4rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  height: 100%;
+  display: none;
+}
+
+.form-title + p {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 95%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Cool-gray);
+  margin-bottom: 2rem;
+}
+
+input:focus {
+  border: 1px solid var(--purple);
+}
+
+.direction {
+  display: flex;
+  align-items: end;
+  gap: 16rem;
+  position: absolute;
+  bottom: 2rem;
+}
+
+.direction .not-visible {
+  color: var(--White);
+}
+
+button {
+  padding: 1rem 2.2rem;
+  border-radius: 0.5rem;
+  border-style: none;
+  color: var(--White);
+  background: var(--Marine-blue);
+}
+
+/* <!-- Step 1 end --> */
+
+/* <!-- Step 2 start --> */
+.form-style {
+  display: none;
+}
+
+.form-title + p {
+  color: var(--Cool-gray);
+}
+
+.option_panel {
+  display: flex;
+  gap: 1rem;
+}
+
+.option_box {
+  width: 9rem;
+  height: 11rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Cool-gray);
+}
+
+.option_box img {
+  margin-bottom: 4rem;
+}
+
+.option_box p {
+  font-weight: 700;
+}
+
+.option_box span {
+  font-size: 0.8rem;
+  color: var(--Cool-gray);
+  display: block;
+  margin-top: -0.3rem;
+}
+
+.toggle-option {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+input[type="radio"] {
+  height: 3rem;
+}
+
+input[type="radio"] + span {
+  color: var(--Cool-gray);
+}
+
+.direction p {
+  margin-bottom: 1rem;
+  color: var(--Cool-gray);
+}
+
+/* <!-- Step 2 end --> */
+
+/* <!-- Step 3 start --> */
+.form-style {
+  display: none;
+}
+
+.onine_service-box {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service-option {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Light-gray);
+}
+
+input[type="checkbox"] {
+  height: 3rem;
+}
+
+.service-details label {
+  font-weight: 700;
+}
+
+.service-details span {
+  color: var(--Cool-gray);
+  font-size: 0.85rem;
+  font-weight: 400;
+  display: block;
+  margin-top: -0.4rem;
+}
+
+.service-option p {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--Purplish-blue);
+}
+
+/* <!-- Step 3 end --> */
+
+
+/* <!-- Step 4 Start --> */
+.form-style.active {
+    display: flex;
+}
+
+.option-selected {
+    background: var(--Magnolia);
+    padding: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 93%;
+    margin-bottom: 2rem;
+}
+
+.type-amount {
+    display: flex;
+    align-items: center;
+}
+
+.type-amount .subscription-type {
+    font-weight: 700;
+}
+
+.type-amount .change-type {
+    display: block;
+    text-decoration: underline;
+    margin-top: -.3rem;
+    font-size: .8rem;
+    color: var(--Cool-gray);
+}
+
+.type-amount .amount {
+    margin-left: auto;
+    font-weight: 700;
+}
+
+.service-typ {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.online-local {
+    display: flex;
+    font-size: .8rem;
+}
+
+.online-local p {
+    color: var(--Cool-gray);
+}
+
+.online-local span {
+    margin-left: auto;
+    color: var(--Marine-blue);
+}
+
+.total {
+    display: flex; 
+    justify-content: space-between;
+    width: 90%;
+}
+
+.total p {
+    color: var(--Cool-gray);
+    font-size: .8rem;
+    margin-left: 1rem;
+}
+
+.total .total-amount {
+    color: var(--Purplish-blue);
+    font-weight: 900;
+}
+/* <!-- Step 4 end --> */
+
+
+/* step 5 start */
+
+.form-style {
+    display: none;
+}
+
+.thank-you {
+    display: flex;
+    width: 93%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30%;
+}
+
+.thank-you p:first-of-type {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.thank-you .para {
+    text-align: center;
+    color: var(--Cool-gray);
+}
+
+
+/* step 5 end  */
+
+@media (max-width: 48em) {
+
+  main {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .form-style {
+    width: 100%;
+    padding: .85rem;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  .step-info {
+    display: none;
+  }
+
+  .step-outline {
+    transform: rotate(90deg);
+    top: 6rem;
+  }
+
+  .step-pane p{
+    transform: rotate(-90deg);
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .form-style.active {
+    position: absolute;
+    background: var(--White);
+    width: 90%;
+    min-height: 60vh;
+    left: 1rem;
+    top: 7rem;
+    border-radius: .85rem;
+    box-shadow: 0rem 1rem 5rem var(--Light-gray);
+  }
+
+  .direction {
+    bottom: -10rem;
+    background: var(--White);
+    padding: 1rem;
+    left: -1rem;
+    gap: 9rem;
+  }
+
+  .direction p {
+    width: 5rem;
+    border: 1px solid red;
+  }
+
+
+
+
+  .thank-you {
+    width: 100%;
+  }
+}
