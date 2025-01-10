@@ -72,7 +72,7 @@
       <!-- Sidebar end -->
 
       <!-- Step 1 start -->
-      <div class="form-style">
+      <div class="form-style active">
         <form>
           <h1 class="form-title">Personal info</h1>
           <p>Please provide your name, email address, and phone number.</p>
@@ -109,7 +109,7 @@
         </form>
         <div class="direction">
           <p class="not-visible">Go Back</p>
-          <button type="button" id="next">Next step</button>
+          <button type="button" class="active" id="next">Next step</button>
         </div>
       </div>
       <!-- Step 1 end -->
@@ -122,20 +122,25 @@
           <div class="option_panel">
             <div class="option_box">
               <img src="./images/icon-arcade.svg" aria-hidden="true" />
-              <p>Arcade</p>
-              <span>$9/mo</span>
+              <div class="subs-type">
+                <p>Arcade</p>
+                <span>$9/mo</span>
+              </div>
             </div>
 
             <div class="option_box">
               <img src="./images/icon-advanced.svg" aria-hidden="true" />
-              <p>Advanced</p>
-              <span>$12/mo</span>
+              <div class="subs-type">
+                <p>Advanced</p>
+                <span>$12/mo</span>
+              </div>
             </div>
-
             <div class="option_box">
               <img src="./images/icon-pro.svg" aria-hidden="true" />
-              <p>Pro</p>
-              <span>$15/mo</span>
+              <div class="subs-type">
+                <p>Pro</p>
+                <span>$15/mo</span>
+              </div>
             </div>
           </div>
           <div class="toggle-option">
@@ -145,8 +150,8 @@
           </div>
         </div>
         <div class="direction">
-          <p>Go Back</p>
-          <button type="button">Next Step</button>
+          <p id="back">Go Back</p>
+          <button id="next" type="button">Next Step</button>
         </div>
       </div>
       <!-- Step 2 end -->
@@ -183,8 +188,8 @@
           </div>
         </div>
         <div class="direction">
-          <p>Go Back</p>
-          <button type="button">Next Step</button>
+          <p id="back">Go Back</p>
+          <button id="next" type="button">Next Step</button>
         </div>
       </div>
 
@@ -192,7 +197,7 @@
 
       <!-- Step 4 start -->
 
-      <div class="form-style active">
+      <div class="form-style">
         <div class="finishing-up">
           <h1 class="form-title">Finishing up</h1>
           <p>Double-check everything looks OK before confirming.</p>
@@ -224,8 +229,14 @@
         </div>
 
         <div class="direction">
-          <p>Go Back</p>
-          <button style="background: var(--Purplish-blue);" type="button">Confirm</button>
+          <p id="back">Go Back</p>
+          <button
+            id="confirm"
+            style="background: var(--Purplish-blue)"
+            type="button"
+          >
+            Confirm
+          </button>
         </div>
       </div>
       <!-- Step 4 end -->
@@ -233,23 +244,24 @@
       <!-- Step 5 start -->
       <div class="form-style">
         <div class="thank-you">
-          <img src="./images/icon-thank-you.svg" aria-hidden="true">
+          <img src="./images/icon-thank-you.svg" aria-hidden="true" />
           <p>Thank you!</p>
-          <p class="para">Thanks for confirming your subscription! We hope you have fun
-            using our platform. If you ever need support, please feel free to email us
-            at support@loremgaming.com.</p>
+          <p class="para">
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free to email us
+            at support@loremgaming.com.
+          </p>
         </div>
       </div>
-     
 
-    <!-- Step 5 end -->
+      <!-- Step 5 end -->
     </main>
 
     <div class="attribution">
       Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-        Coded by
-        <a href="https://myportfolio-theta-plum.vercel.app/#">Tabong Philip</a>.
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by
+      <a href="https://myportfolio-theta-plum.vercel.app/#">Tabong Philip</a>.
     </div>
   </body>
 </html>
