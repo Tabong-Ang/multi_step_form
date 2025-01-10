@@ -170,6 +170,10 @@ aside {
   display: none;
 }
 
+.form-style.active {
+  display: flex;
+}
+
 .form-title + p {
   margin-bottom: 2rem;
 }
@@ -215,9 +219,6 @@ button {
 /* <!-- Step 1 end --> */
 
 /* <!-- Step 2 start --> */
-.form-style {
-  display: none;
-}
 
 .form-title + p {
   color: var(--Cool-gray);
@@ -270,14 +271,12 @@ input[type="radio"] + span {
 .direction p {
   margin-bottom: 1rem;
   color: var(--Cool-gray);
+  cursor: default;
 }
 
 /* <!-- Step 2 end --> */
 
 /* <!-- Step 3 start --> */
-.form-style {
-  display: none;
-}
 
 .onine_service-box {
   width: 95%;
@@ -321,9 +320,6 @@ input[type="checkbox"] {
 
 
 /* <!-- Step 4 Start --> */
-.form-style.active {
-    display: flex;
-}
 
 .option-selected {
     background: var(--Magnolia);
@@ -399,10 +395,6 @@ input[type="checkbox"] {
 
 /* step 5 start */
 
-.form-style {
-    display: none;
-}
-
 .thank-you {
     display: flex;
     width: 93%;
@@ -435,10 +427,10 @@ input[type="checkbox"] {
     height: 100%;
   }
 
-  .form-style {
+  /* .form-style {
     width: 100%;
     padding: .85rem;
-  }
+  } */
 
   aside {
     width: 100%;
@@ -460,7 +452,7 @@ input[type="checkbox"] {
     font-size: 1.2rem;
   }
 
-  .form-style.active {
+  .form-style {
     position: absolute;
     background: var(--White);
     width: 90%;
