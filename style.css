@@ -112,6 +112,7 @@ main {
   padding: 1rem;
   border-radius: 0.85rem;
   width: 70%;
+  height: 95vh;
   background: var(--White);
   position: relative;
 }
@@ -119,15 +120,15 @@ main {
 /* <!-- Step 1 start --> */
 
 aside {
-  display: flex;
-  position: relative;
   width: 35%;
+  height: 100%;
+  background-image: url("./images/bg-sidebar-desktop.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .step-outline {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
+  margin: 2rem 1rem;
   width: 80%;
 }
 
@@ -190,6 +191,40 @@ input[type="tel"] {
   border-radius: 0.5rem;
   border: 1px solid var(--Cool-gray);
   margin-bottom: 2rem;
+}
+
+input[type="text"] + span,
+input[type="email"] + span,
+input[type="tel"] + span {
+  position: relative;
+  display: block;
+  margin-top: -1.3rem;
+  margin-bottom: 1rem;
+  visibility: hidden;
+}
+
+input[type="text"] + span::before,
+input[type="email"] + span::before,
+input[type="tel"] + span::before {
+  position: absolute;
+  content: "This field is required";
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--Strawberry-red);
+  right: 2rem;
+  top: -5rem;
+}
+
+input[type="text"]:valid,
+input[type="email"]:valid,
+input[type="tel"]:valid {
+  border-color: var(--purple);
+}
+
+input[type="text"]:invalid,
+input[type="email"]:invalid,
+input[type="tel"]:invalid {
+  border-color: var(--Strawberry-red);
 }
 
 input:focus {
@@ -421,15 +456,12 @@ input[type="checkbox"] {
     border-radius: 0;
     padding: 0;
     height: 100%;
+    background: var(--Light-blue);
   }
-
-  /* .form-style {
-    width: 100%;
-    padding: .85rem;
-  } */
 
   aside {
     width: 100%;
+    background-image: url("./images/bg-sidebar-mobile.svg");
   }
 
   .step-info {
@@ -437,8 +469,8 @@ input[type="checkbox"] {
   }
 
   .step-outline {
+    margin: 5rem 2rem;
     transform: rotate(90deg);
-    top: 6rem;
   }
 
   .step-pane p {
@@ -452,9 +484,9 @@ input[type="checkbox"] {
     position: absolute;
     background: var(--White);
     width: 90%;
-    min-height: 60vh;
-    left: 1rem;
-    top: 7rem;
+    min-height: 65vh;
+    left: 1.2rem;
+    top: 6.2rem;
     border-radius: 0.85rem;
     box-shadow: 0rem 1rem 5rem var(--Light-gray);
     padding: 1rem;
@@ -466,6 +498,14 @@ input[type="checkbox"] {
     margin-bottom: 1rem;
   }
 
+  input[type="text"] + span::before,
+  input[type="email"] + span::before,
+  input[type="tel"] + span::before {
+    top: -3.8rem;
+    right: 1.5rem;
+    font-size: 0.7rem;
+  }
+
   .direction {
     position: fixed;
     bottom: 0;
@@ -474,6 +514,7 @@ input[type="checkbox"] {
     padding: 1rem;
     left: 0;
     gap: 5rem;
+    width: 100%;
   }
 
   .direction p {
@@ -481,7 +522,7 @@ input[type="checkbox"] {
   }
 
   #next {
-    width: 50%;
+    width: 10rem;
     margin-right: 1rem;
   }
 
@@ -516,5 +557,19 @@ input[type="checkbox"] {
 
   .option-selected {
     width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .direction {
+    bottom: 0.5rem;
+    right: 1rem;
+  }
+}
+
+@media (min-width: 373px) {
+  .step-outline {
+    top: -4rem;
+    left: 3rem;
   }
 }
