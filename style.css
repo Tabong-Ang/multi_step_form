@@ -522,7 +522,7 @@ input[type="checkbox"] {
   }
 
   #next {
-    width: 10rem;
+    width: 12rem;
     margin-right: 1rem;
   }
 
@@ -564,6 +564,13 @@ input[type="checkbox"] {
   .direction {
     bottom: 0.5rem;
     right: 1rem;
+  }
+}
+
+@media (min-width: 1184px) {
+  .direction {
+    right: 6.5rem;
+    bottom: 2rem;
   }
 }
 
