@@ -3,27 +3,7 @@ const nextBtn = document.querySelectorAll("#next");
 const formStyle = document.querySelectorAll(".form-style");
 const goBack = document.querySelectorAll("#back");
 const inputErrorSpan = document.querySelectorAll(".error");
-const inputName = document.querySelector("input[type='text']");
-const inputEmail = document.querySelector("input[type='email']");
-const inputTel = document.querySelector("input[type='tel']");
-
-// Show error message
-function showError(input, message) {
-  const errorSpan = input.nextElementSibling;
-  errorSpan.textContent = message;
-  inputErrorSpan.forEach(span => {
-    span.style.visibility = "visible";
-  });
-}
-
-// Hide error message
-function hideError(input) {
-  const errorSpan = input.nextElementSibling;
-  errorSpan.textContent = "";
-  inputErrorSpan.forEach(span => {
-    span.style.visibility = "hidden";
-  });
-}
+const inputElements = document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
 
 // Show the form at the specified index
 let index = 0;
@@ -36,18 +16,48 @@ const showPage = (idx) => {
 // Add click event listeners to the next buttons
 nextBtn.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (typeof inputName.value !== "string" || inputName.value.trim() === "") {
-      showError(inputName, "Please enter a valid name");
-    } else if (!inputEmail.validity.valid) {
-      showError(inputEmail, "Please enter a valid email");
-    } else {
-      if (index < formStyle.length - 1) {
-        index++;
-        showPage(index);
+    let formValid = true;
+
+    inputElements.forEach(input => {
+      const span = input.nextElementSibling;
+      if (input.type === 'text' && /\d/.test(input.value)) {
+        formValid = false;
+        if (span && span.tagName === "SPAN") {
+          span.style.visibility = "visible";
+          span.textContent = "Name can't contain a number";
+          input.style.border = "1px solid var(--Strawberry-red)";
+        }
+      } else if (!input.validity.valid) {
+        formValid = false;
+        if (span && span.tagName === "SPAN") {
+          span.style.visibility = "visible";
+          span.textContent = "Please enter a valid value";
+          input.style.border = "1px solid var(--Strawberry-red)";
+        }
+      } else {
+        if (span && span.tagName === "SPAN") {
+          span.style.visibility = "hidden";
+          span.textContent = ""; // Clear the error message for valid inputs
+        }
+        input.style.border = ""; // Remove border for valid input
       }
-      hideError(inputName);
-      hideError(inputEmail);
+    });
+
+    if (formValid && index < formStyle.length - 1) {
+      index++;
+      showPage(index);
+    }
+  });
+});
+
+// Add input event listeners to clear errors as the user types
+inputElements.forEach(input => {
+  input.addEventListener("input", () => {
+    const span = input.nextElementSibling;
+    if (span && span.tagName === "SPAN") {
+      span.style.visibility = "hidden";
+      span.textContent = ""; // Clear error message while typing
+      input.style.border = ""; // Remove error border while typing
     }
   });
 });
@@ -59,13 +69,6 @@ goBack.forEach((btn) => {
       index--;
       showPage(index);
     }
-  });
-});
-
-// Add input event listeners to hide error messages while typing
-[inputName, inputEmail, inputTel].forEach((input) => {
-  input.addEventListener("input", () => {
-    hideError(input);
   });
 });
 

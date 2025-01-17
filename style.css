@@ -196,39 +196,27 @@ input[type="tel"] {
 input[type="text"] + span,
 input[type="email"] + span,
 input[type="tel"] + span {
-  position: relative;
+  position: absolute;
   display: block;
-  margin-top: -1.3rem;
+  margin-top: -2.1rem;
   margin-bottom: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
   visibility: hidden;
+  width: 100%;
+  color: var(--Strawberry-red);
 }
 
-input[type="text"] + span::before,
-input[type="email"] + span::before,
-input[type="tel"] + span::before {
+input[type="text"]:invalid + span::before,
+input[type="email"]:invalid + span::before,
+input[type="tel"]:invalid + span::before {
   position: absolute;
   content: "This field is required";
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--Strawberry-red);
-  right: 2rem;
-  top: -5rem;
-}
-
-input[type="text"]:valid,
-input[type="email"]:valid,
-input[type="tel"]:valid {
-  border-color: var(--purple);
-}
-
-input[type="text"]:invalid,
-input[type="email"]:invalid,
-input[type="tel"]:invalid {
-  border-color: var(--Strawberry-red);
-}
-
-input:focus {
-  border: 1px solid var(--purple);
+  left: 20rem;
+  top: -4rem;
 }
 
 .direction {
@@ -498,11 +486,19 @@ input[type="checkbox"] {
     margin-bottom: 1rem;
   }
 
-  input[type="text"] + span::before,
-  input[type="email"] + span::before,
-  input[type="tel"] + span::before {
-    top: -3.8rem;
-    right: 1.5rem;
+  input[type="text"]:invalid + span,
+  input[type="email"]:invalid + span,
+  input[type="tel"]:invalid + span {
+    width: 90%;
+    font-size: 0.7rem;
+    margin-top: -1rem;
+  }
+
+  input[type="text"]:invalid + span::before,
+  input[type="email"]:invalid + span::before,
+  input[type="tel"]:invalid + span::before {
+    top: -3.9rem;
+    left: 11rem;
     font-size: 0.7rem;
   }
 
