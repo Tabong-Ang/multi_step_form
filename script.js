@@ -3,13 +3,24 @@ const nextBtn = document.querySelectorAll("#next");
 const formStyle = document.querySelectorAll(".form-style");
 const goBack = document.querySelectorAll("#back");
 const inputErrorSpan = document.querySelectorAll(".error");
-const inputElements = document.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']");
+const inputElements = document.querySelectorAll(
+  "input[type='text'], input[type='email'], input[type='tel']"
+);
+const numBgFill = document.querySelectorAll("#num-bg-fill");
 
 // Show the form at the specified index
 let index = 0;
 const showPage = (idx) => {
   formStyle.forEach((form, i) => {
     form.classList.toggle("active", i === idx);
+  });
+
+  numBgFill.forEach((num, i) => {
+    if (i <= idx) {
+      num.style.backgroundColor = "var(--Pastel-blue)";
+    } else {
+      num.style.backgroundColor = "transparent";
+    }
   });
 };
 
@@ -18,9 +29,9 @@ nextBtn.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     let formValid = true;
 
-    inputElements.forEach(input => {
+    inputElements.forEach((input) => {
       const span = input.nextElementSibling;
-      if (input.type === 'text' && /\d/.test(input.value)) {
+      if (input.type === "text" && /\d/.test(input.value)) {
         formValid = false;
         if (span && span.tagName === "SPAN") {
           span.style.visibility = "visible";
@@ -51,7 +62,7 @@ nextBtn.forEach((btn) => {
 });
 
 // Add input event listeners to clear errors as the user types
-inputElements.forEach(input => {
+inputElements.forEach((input) => {
   input.addEventListener("input", () => {
     const span = input.nextElementSibling;
     if (span && span.tagName === "SPAN") {
@@ -72,5 +83,43 @@ goBack.forEach((btn) => {
   });
 });
 
+const toggle = document.getElementById("toggle");
+const spans = document.querySelectorAll(".toggle-switch span");
+const subscriptionType = document.querySelectorAll("#arcade, #advanced, #pro");
+
+toggle.addEventListener("change", () => {
+  subscriptionType.forEach((subscription) => {
+    let subscriptionAmt = subscription.nextElementSibling;
+    let subscriptionBonus = subscriptionAmt.nextElementSibling;
+    subscriptionBonus.style.color = "var(--Marine-blue)";
+    if (toggle.checked) {
+      if (subscription.id === "arcade") {
+        subscriptionAmt.innerHTML = "$90/yr";
+        subscriptionBonus.innerHTML = "2 months free";
+      } else if (subscription.id === "advanced") {
+        subscriptionAmt.innerHTML = "$120/yr";
+        subscriptionBonus.innerHTML = "2 months free";
+      } else if (subscription.id === "pro") {
+        subscriptionAmt.innerHTML = "$150/yr";
+        subscriptionBonus.innerHTML = "2 months free";
+      }
+      spans[1].classList.add("active");
+      spans[0].classList.remove("active");
+    } else {
+      if (subscription.id === "arcade") {
+        subscriptionAmt.innerHTML = "$9/mo";
+        subscriptionBonus.innerHTML = "";
+      } else if (subscription.id === "advanced") {
+        subscriptionAmt.innerHTML = "$12/mo";
+        subscriptionBonus.innerHTML = "";
+      } else if (subscription.id === "pro") {
+        subscriptionAmt.innerHTML = "$15/mo";
+        subscriptionBonus.innerHTML = "";
+      }
+      spans[0].classList.add("active");
+      spans[1].classList.remove("active");
+    }
+  });
+});
 // Show the first page initially
 showPage(index);

@@ -31,29 +31,29 @@
       <!-- Sidebar start -->
       <aside class="personal-info">
         <div class="step-outline">
-          <div class="step-pane" >
-            <p id="one">1</p>
+          <div class="step-pane">
+            <p id="num-bg-fill">1</p>
             <div class="step-info">
               <span>STEP 1</span>
               <p>YOUR INFO</p>
             </div>
           </div>
           <div class="step-pane">
-            <p>2</p>
+            <p id="num-bg-fill">2</p>
             <div class="step-info">
               <span>STEP 2</span>
               <p>SELECT PLAN</p>
             </div>
           </div>
           <div class="step-pane">
-            <p>3</p>
+            <p id="num-bg-fill">3</p>
             <div class="step-info">
               <span>STEP 3</span>
               <p>ADD-ONS</p>
             </div>
           </div>
           <div class="step-pane">
-            <p>4</p>
+            <p id="num-bg-fill">4</p>
             <div class="step-info">
               <span>STEP 4</span>
               <p>SUMMARY</p>
@@ -118,29 +118,33 @@
             <div class="option_box">
               <img src="./images/icon-arcade.svg" aria-hidden="true" />
               <div class="subs-type">
-                <p>Arcade</p>
+                <p id="arcade">Arcade</p>
                 <span>$9/mo</span>
+                <span></span>
               </div>
             </div>
 
             <div class="option_box">
               <img src="./images/icon-advanced.svg" aria-hidden="true" />
               <div class="subs-type">
-                <p>Advanced</p>
+                <p id="advanced">Advanced</p>
                 <span>$12/mo</span>
+                <span></span>
               </div>
             </div>
             <div class="option_box">
               <img src="./images/icon-pro.svg" aria-hidden="true" />
               <div class="subs-type">
-                <p>Pro</p>
+                <p id="pro">Pro</p>
                 <span>$15/mo</span>
+                <span></span>
               </div>
             </div>
           </div>
-          <div class="toggle-option">
-            <span>Monthly</span>
-            <input type="radio" name="" id="" />
+          <div class="toggle-switch">
+            <span>Monthly</span> 
+            <input type="checkbox" id="toggle" />
+            <label for="toggle"></label> 
             <span>Yearly</span>
           </div>
         </div>
@@ -226,8 +230,8 @@
         <div class="direction">
           <p id="back">Go Back</p>
           <button
-            id="confirm"
-            style="background: var(--Purplish-blue); margin-right: 1.3rem;"
+            id="next"
+            style="background: var(--Purplish-blue); margin-right: 1.3rem"
             type="button"
           >
             Confirm

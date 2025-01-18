@@ -81,17 +81,17 @@ h6 {
 }
 
 :root {
-  --Marine-blue: hsl(213, 96%, 18%);
-  --Purplish-blue: hsl(243, 100%, 62%);
-  --Pastel-blue: hsl(228, 100%, 84%);
-  --Light-blue: hsl(206, 94%, 87%);
-  --Strawberry-red: hsl(354, 84%, 57%);
-  --Cool-gray: hsl(231, 11%, 63%);
-  --Light-gray: hsl(229, 24%, 87%);
-  --Magnolia: hsl(217, 100%, 97%);
-  --Alabaster: hsl(231, 100%, 99%);
-  --White: hsl(0, 0%, 100%);
-  --purple: hsl(270, 50%, 40%);
+  --Marine-blue: #02295a;
+  --Purplish-blue: #473dff;
+  --Pastel-blue: #adbeff;
+  --Light-blue: #bfe2fd;
+  --Strawberry-red: #ed3548;
+  --Cool-gray: #9699ab;
+  --Light-gray: #d6d9e6;
+  --Magnolia: #f0f6ff;
+  --Alabaster: #fafbff;
+  --White: #ffffff;
+  --purple: #663399;
 }
 
 html {
@@ -266,6 +266,7 @@ button {
 
 .option_box p {
   font-weight: 700;
+  color: var(--Marine-blue);
 }
 
 .option_box span {
@@ -275,21 +276,42 @@ button {
   margin-top: -0.3rem;
 }
 
-.toggle-option {
+.toggle-switch {
   display: flex;
-  margin-top: 2rem;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.toggle-switch span {
+  padding: .625rem;
+  cursor: pointer;
+}
+.toggle-switch input {
+  display: none;
+}
+.toggle-switch label {
+  background: var(--Marine-blue);
+  width: 2rem;
+  height: 1rem;
+  position: relative;
+  border-radius: 1.56rem;
+  transition: background-color 0.3s;
+}
+.toggle-switch label::after {
+  content: "";
+  width: .9rem;
+  height: .9rem;
+  background: var(--White);
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 0.3s;
+}
+input:checked + label::after {
+  transform: translateX(1rem);
 }
 
-input[type="radio"] {
-  height: 3rem;
-}
-
-input[type="radio"] + span {
-  color: var(--Cool-gray);
-}
 
 .direction p {
   margin-bottom: 1rem;
