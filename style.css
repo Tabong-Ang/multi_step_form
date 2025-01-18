@@ -243,6 +243,10 @@ button {
 
 /* <!-- Step 2 start --> */
 
+.select-plan {
+  position: relative;
+}
+
 .form-title + p {
   color: var(--Cool-gray);
 }
@@ -258,6 +262,20 @@ button {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--Cool-gray);
+}
+
+.errorMessage {
+  position: absolute;
+  text-align: center;
+  color: var(--Strawberry-red);
+  transform: translateX(140%);
+  font-size: .8rem;
+  font-weight: 700;
+  visibility: hidden;
+}
+
+.option_box.active {
+  border: 2px solid var(--purple);
 }
 
 .option_box img {
@@ -285,6 +303,7 @@ button {
 .toggle-switch span {
   padding: .625rem;
   cursor: pointer;
+  color: var(--Cool-gray);
 }
 .toggle-switch input {
   display: none;
@@ -396,6 +415,7 @@ input[type="checkbox"] {
 .type-amount .amount {
   margin-left: auto;
   font-weight: 700;
+  align-self:auto;
 }
 
 .service-typ {

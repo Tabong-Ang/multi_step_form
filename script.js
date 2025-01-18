@@ -86,6 +86,11 @@ goBack.forEach((btn) => {
 const toggle = document.getElementById("toggle");
 const spans = document.querySelectorAll(".toggle-switch span");
 const subscriptionType = document.querySelectorAll("#arcade, #advanced, #pro");
+let onlineYear = document.querySelector("#online-year");
+let largerYear = document.querySelector("#larger-year");
+let customizeYear = document.querySelector("#customize-year");
+let subscriptionTypeAmount = document.querySelector(".amount");
+let selectedPlan = null;
 
 toggle.addEventListener("change", () => {
   subscriptionType.forEach((subscription) => {
@@ -93,19 +98,33 @@ toggle.addEventListener("change", () => {
     let subscriptionBonus = subscriptionAmt.nextElementSibling;
     subscriptionBonus.style.color = "var(--Marine-blue)";
     if (toggle.checked) {
+      document.querySelector("#yearly-span").style.color = "var(--Marine-blue)";
+      document.querySelector("#monthly-span").style.color = "";
       if (subscription.id === "arcade") {
         subscriptionAmt.innerHTML = "$90/yr";
         subscriptionBonus.innerHTML = "2 months free";
+        subscriptionTypeAmount.innerHTML = "$90/yr"
+        onlineYear.innerHTML = "+$10/yr";
+        largerYear.innerHTML = "+$20/yr";
+        customizeYear.innerHTML = "+$20/yr";
       } else if (subscription.id === "advanced") {
         subscriptionAmt.innerHTML = "$120/yr";
         subscriptionBonus.innerHTML = "2 months free";
+        onlineYear.innerHTML = "+$10/yr";
+        largerYear.innerHTML = "+$20/yr";
+        customizeYear.innerHTML = "+$20/yr";
       } else if (subscription.id === "pro") {
         subscriptionAmt.innerHTML = "$150/yr";
         subscriptionBonus.innerHTML = "2 months free";
+        onlineYear.innerHTML = "+$10/yr";
+        largerYear.innerHTML = "+$20/yr";
+        customizeYear.innerHTML = "+$20/yr";
       }
       spans[1].classList.add("active");
       spans[0].classList.remove("active");
     } else {
+      document.querySelector("#monthly-span").style.color = "var(--Marine-blue)";
+      document.querySelector("#yearly-span").style.color = "";
       if (subscription.id === "arcade") {
         subscriptionAmt.innerHTML = "$9/mo";
         subscriptionBonus.innerHTML = "";
@@ -120,6 +139,62 @@ toggle.addEventListener("change", () => {
       spans[1].classList.remove("active");
     }
   });
+  updateSubscriptionType();
 });
+
+const optionBox = document.querySelectorAll(".option_box");
+const errorMessage = document.querySelector(".errorMessage")
+
+optionBox.forEach((box) => {
+  box.addEventListener("click", () => {
+    optionBox.forEach((item) => {
+      item.classList.remove("active");
+    });
+    box.classList.add("active");
+    selectedPlan = box.textContent;
+    updateSubscriptionType();
+  });
+});
+
+const inputCheckBoxes = document.querySelectorAll("input[type='checkbox']");
+let localTypeSele = document.querySelector("#local-1");
+let storageTypeSele = document.querySelector("#local-2");
+let onlineServiceLabel = document.querySelector("#online-label");
+let storageServiceLabel = document.querySelector("#storage-label");
+let local_1_span = document.querySelector("#local-1-span")
+let storage_1_span = document.querySelector("#local-2-span")
+let serviceOptionDiv = document.querySelector(".service-option");
+let serviceOptionDiv2 = document.querySelector(".service-option-2");
+
+inputCheckBoxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", () => {
+    if (document.querySelector("#online").checked) {
+      localTypeSele.innerHTML = onlineServiceLabel.textContent;
+      local_1_span.innerHTML = onlineYear.textContent;
+      serviceOptionDiv.style.border = "2px solid var(--purple)";
+    } else {
+      localTypeSele.innerHTML = ""
+      local_1_span.innerHTML = "";
+      serviceOptionDiv.style.border = "";
+    }
+    if (document.querySelector("#storage").checked) {
+      storageTypeSele.innerHTML = storageServiceLabel.textContent;
+      storage_1_span.innerHTML = largerYear.textContent;
+      serviceOptionDiv2.style.border = "2px solid var(--purple)";
+    } else {
+      storageTypeSele.innerHTML = "";
+      storage_1_span.innerHTML = "";
+      serviceOptionDiv2.style.border = "";
+    }
+  });
+});
+
+function updateSubscriptionType() { 
+  if (selectedPlan) { 
+    const billingCycle = toggle.checked ? "Yearly" : "Monthly"; 
+    const planName = selectedPlan.split(' $')[0]; // Split the text at the amount to get the plan name 
+    document.querySelector(".subscription-type").innerHTML = `${planName} (${billingCycle})`;
+  } 
+}
 // Show the first page initially
 showPage(index);
