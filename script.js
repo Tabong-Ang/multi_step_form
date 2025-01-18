@@ -7,6 +7,7 @@ const inputElements = document.querySelectorAll(
   "input[type='text'], input[type='email'], input[type='tel']"
 );
 const numBgFill = document.querySelectorAll("#num-bg-fill");
+const errorMessage = document.querySelector(".errorMessage");
 
 // Show the form at the specified index
 let index = 0;
@@ -128,12 +129,21 @@ toggle.addEventListener("change", () => {
       if (subscription.id === "arcade") {
         subscriptionAmt.innerHTML = "$9/mo";
         subscriptionBonus.innerHTML = "";
+        onlineYear.innerHTML = "+$1/mo";
+        largerYear.innerHTML = "+$2/mo";
+        customizeYear.innerHTML = "+$2/mo";
       } else if (subscription.id === "advanced") {
         subscriptionAmt.innerHTML = "$12/mo";
         subscriptionBonus.innerHTML = "";
+        onlineYear.innerHTML = "+$1/mo";
+        largerYear.innerHTML = "+$2/mo";
+        customizeYear.innerHTML = "+$2/mo";
       } else if (subscription.id === "pro") {
         subscriptionAmt.innerHTML = "$15/mo";
         subscriptionBonus.innerHTML = "";
+        onlineYear.innerHTML = "+$1/mo";
+        largerYear.innerHTML = "+$2/mo";
+        customizeYear.innerHTML = "+$2/mo";
       }
       spans[0].classList.add("active");
       spans[1].classList.remove("active");
@@ -143,7 +153,6 @@ toggle.addEventListener("change", () => {
 });
 
 const optionBox = document.querySelectorAll(".option_box");
-const errorMessage = document.querySelector(".errorMessage")
 
 optionBox.forEach((box) => {
   box.addEventListener("click", () => {
@@ -196,5 +205,14 @@ function updateSubscriptionType() {
     document.querySelector(".subscription-type").innerHTML = `${planName} (${billingCycle})`;
   } 
 }
+
+let changeSubscriptype = document.querySelector(".change-type");
+
+changeSubscriptype.addEventListener("click", () => {
+  // Navigate to the second page
+  index = 1; // Assuming the second page has an index of 1
+  showPage(index);
+});
+
 // Show the first page initially
 showPage(index);

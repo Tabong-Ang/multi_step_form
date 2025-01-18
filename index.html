@@ -31,32 +31,36 @@
       <!-- Sidebar start -->
       <aside class="personal-info">
         <div class="step-outline">
-          <div class="step-pane">
+          <div class="numbers">
             <p id="num-bg-fill">1</p>
-            <div class="step-info">
-              <span>STEP 1</span>
-              <p>YOUR INFO</p>
-            </div>
-          </div>
-          <div class="step-pane">
             <p id="num-bg-fill">2</p>
-            <div class="step-info">
-              <span>STEP 2</span>
-              <p>SELECT PLAN</p>
-            </div>
-          </div>
-          <div class="step-pane">
             <p id="num-bg-fill">3</p>
-            <div class="step-info">
-              <span>STEP 3</span>
-              <p>ADD-ONS</p>
-            </div>
-          </div>
-          <div class="step-pane">
             <p id="num-bg-fill">4</p>
-            <div class="step-info">
-              <span>STEP 4</span>
-              <p>SUMMARY</p>
+          </div>
+          <div class="step-pane-box">
+            <div class="step-pane">
+              <div class="step-info">
+                <span>STEP 1</span>
+                <p>YOUR INFO</p>
+              </div>
+            </div>
+            <div class="step-pane">
+              <div class="step-info">
+                <span>STEP 2</span>
+                <p>SELECT PLAN</p>
+              </div>
+            </div>
+            <div class="step-pane">
+              <div class="step-info">
+                <span>STEP 3</span>
+                <p>ADD-ONS</p>
+              </div>
+            </div>
+            <div class="step-pane">
+              <div class="step-info">
+                <span>STEP 4</span>
+                <p>SUMMARY</p>
+              </div>
             </div>
           </div>
         </div>
@@ -141,11 +145,11 @@
               </div>
             </div>
           </div>
-          <span class="errorMessage">Please select a plan</span>
+          <div class="errorMessage">Please select a plan</div>
           <div class="toggle-switch">
-            <span id="monthly-span">Monthly</span> 
+            <span id="monthly-span">Monthly</span>
             <input type="checkbox" id="toggle" />
-            <label for="toggle"></label> 
+            <label for="toggle"></label>
             <span id="yearly-span">Yearly</span>
           </div>
         </div>
@@ -163,7 +167,8 @@
         <p>Add-ons help enhance your gaming experience.</p>
         <div class="onine_service-box">
           <div class="service-option">
-            <input type="checkbox" name="online" id="online" />
+            <input type="checkbox" name="online" id="online" required />
+            <span class="checkboxError"></span>
             <div class="service-details">
               <label id="online-label" for="online">Online service</label>
               <span>Access to multiplayer games</span>
@@ -171,7 +176,7 @@
             <p id="online-year">+$1/mo</p>
           </div>
           <div class="service-option service-option-2">
-            <input type="checkbox" name="storage" id="storage" />
+            <input type="checkbox" name="storage" id="storage" required />
             <div class="service-details">
               <label id="storage-label" for="storage">Larger storage</label>
               <span>Extra 1TB of cloud save</span>
@@ -179,7 +184,7 @@
             <p id="larger-year">+$2/mo</p>
           </div>
           <div class="service-option">
-            <input type="checkbox" name="profile" id="profile" />
+            <input type="checkbox" name="profile" id="profile" required />
             <div class="service-details">
               <label for="profile">Customizable Profile</label>
               <span>Custom theme on your profile</span>
