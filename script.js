@@ -168,10 +168,14 @@ optionBox.forEach((box) => {
 const inputCheckBoxes = document.querySelectorAll("input[type='checkbox']");
 let localTypeSele = document.querySelector("#local-1");
 let storageTypeSele = document.querySelector("#local-2");
+let customizeTypeSele = document.querySelector("#local-3");
 let onlineServiceLabel = document.querySelector("#online-label");
 let storageServiceLabel = document.querySelector("#storage-label");
-let local_1_span = document.querySelector("#local-1-span")
-let storage_1_span = document.querySelector("#local-2-span")
+let customizeServiceLabel = document.querySelector("#customize-label");
+let local_1_span = document.querySelector("#local-1-span");
+let storage_1_span = document.querySelector("#local-2-span");
+let customize_1_span = document.querySelector("#local-3-span");
+
 let serviceOptionDiv = document.querySelector(".service-option");
 let serviceOptionDiv2 = document.querySelector(".service-option-2");
 
@@ -195,6 +199,15 @@ inputCheckBoxes.forEach((checkbox) => {
       storage_1_span.innerHTML = "";
       serviceOptionDiv2.style.border = "";
     }
+    if (document.querySelector("#storage").checked) {
+      customizeTypeSele.innerHTML = customizeServiceLabel.textContent;
+      customize_1_span.innerHTML = customizeYear.textContent;
+      serviceOptionDiv2.style.border = "2px solid var(--purple)";
+    } else {
+      customizeTypeSele.innerHTML = "";
+      customize_1_spaninnerHTML = "";
+      serviceOptionDiv2.style.border = "";
+    }
   });
 });
 
@@ -213,6 +226,41 @@ changeSubscriptype.addEventListener("click", () => {
   index = 1; // Assuming the second page has an index of 1
   showPage(index);
 });
+
+const totalAmount = document.querySelector(".total-amount");
+
+// Function to extract numeric value from a string
+const getNumericValue = (element) => {
+  const value = element.innerHTML.replace(/[^\d.]/g, ''); // Remove non-numeric characters
+  return parseFloat(value) || 0; // Convert to number, default to 0 if NaN
+};
+
+// Calculate the total amount
+const calculateTotalAmount = () => {
+  const subscriptionAmount = getNumericValue(subscriptionTypeAmount);
+  const localAmount = getNumericValue(local_1_span);
+  const storageAmount = getNumericValue(storage_1_span);
+  const customizeAmount = getNumericValue(customize_1_span);
+  const billingCycle = toggle.checked ? "/yr" : "/mo"; 
+  const total = subscriptionAmount + localAmount + storageAmount + customizeAmount;
+  totalAmount.innerHTML = `+$${total} ${billingCycle}`; // Display the total amount with 2 decimal places
+};
+
+// Create a MutationObserver instance to watch for changes in the elements
+const observer = new MutationObserver(calculateTotalAmount);
+
+// Specify the target nodes to observe
+const targets = [subscriptionTypeAmount, local_1_span, storage_1_span, customize_1_span];
+targets.forEach(target => {
+  observer.observe(target, { childList: true, subtree: true, characterData: true });
+});
+
+// Call the function to calculate and display the total amount initially
+calculateTotalAmount();
+
+
+
+
 
 // Show the first page initially
 showPage(index);
