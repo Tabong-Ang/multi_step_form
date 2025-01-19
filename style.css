@@ -463,7 +463,8 @@ input[type="checkbox"]:invalid + span::before {
 .total {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
+  align-items: center;
 }
 
 .total p {
@@ -475,6 +476,7 @@ input[type="checkbox"]:invalid + span::before {
 .total .total-amount {
   color: var(--Purplish-blue);
   font-weight: 900;
+  font-size: 1.1rem;
 }
 /* <!-- Step 4 end --> */
 
