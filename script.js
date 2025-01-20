@@ -111,35 +111,40 @@ toggle.addEventListener("change", () => {
       } else if (subscription.id === "advanced") {
         subscriptionAmt.innerHTML = "$120/yr";
         subscriptionBonus.innerHTML = "2 months free";
+        subscriptionTypeAmount.innerHTML = "$120/yr"
         onlineYear.innerHTML = "+$10/yr";
         largerYear.innerHTML = "+$20/yr";
         customizeYear.innerHTML = "+$20/yr";
       } else if (subscription.id === "pro") {
         subscriptionAmt.innerHTML = "$150/yr";
         subscriptionBonus.innerHTML = "2 months free";
+        subscriptionTypeAmount.innerHTML = "$150/yr"
         onlineYear.innerHTML = "+$10/yr";
         largerYear.innerHTML = "+$20/yr";
         customizeYear.innerHTML = "+$20/yr";
       }
       spans[1].classList.add("active");
       spans[0].classList.remove("active");
-    } else {
+    } else if (!toggle.checked) {
       document.querySelector("#monthly-span").style.color = "var(--Marine-blue)";
       document.querySelector("#yearly-span").style.color = "";
       if (subscription.id === "arcade") {
         subscriptionAmt.innerHTML = "$9/mo";
+        subscriptionTypeAmount.innerHTML = "$9/mo"
         subscriptionBonus.innerHTML = "";
         onlineYear.innerHTML = "+$1/mo";
         largerYear.innerHTML = "+$2/mo";
         customizeYear.innerHTML = "+$2/mo";
       } else if (subscription.id === "advanced") {
         subscriptionAmt.innerHTML = "$12/mo";
+        subscriptionTypeAmount.innerHTML = "$12/mo"
         subscriptionBonus.innerHTML = "";
         onlineYear.innerHTML = "+$1/mo";
         largerYear.innerHTML = "+$2/mo";
         customizeYear.innerHTML = "+$2/mo";
       } else if (subscription.id === "pro") {
         subscriptionAmt.innerHTML = "$15/mo";
+        subscriptionTypeAmount.innerHTML = "$15/mo"
         subscriptionBonus.innerHTML = "";
         onlineYear.innerHTML = "+$1/mo";
         largerYear.innerHTML = "+$2/mo";
@@ -243,7 +248,7 @@ const calculateTotalAmount = () => {
   const customizeAmount = getNumericValue(customize_1_span);
   const billingCycle = toggle.checked ? "/yr" : "/mo"; 
   const total = subscriptionAmount + localAmount + storageAmount + customizeAmount;
-  totalAmount.innerHTML = `+$${total} ${billingCycle}`; // Display the total amount with 2 decimal places
+  totalAmount.innerHTML = `+$${total}${billingCycle}`; // Display the total amount with 2 decimal places
 };
 
 // Create a MutationObserver instance to watch for changes in the elements

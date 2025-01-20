@@ -105,7 +105,6 @@ body {
   flex-direction: column;
   background: var(--Light-blue);
   overflow: hidden;
-  padding: 1rem 0;
 }
 
 main {
@@ -463,7 +462,7 @@ input[type="checkbox"]:invalid + span::before {
 .total {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   align-items: center;
 }
 
@@ -609,6 +608,10 @@ input[type="checkbox"]:invalid + span::before {
   }
 
   .onine_service-box {
+    width: 100%;
+  }
+
+  .total {
     width: 100%;
   }
 
